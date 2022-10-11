@@ -1,0 +1,36 @@
+.products-total {
+    width: 100%;
+    margin: 3px;
+    padding: 20px 15px;
+    background-color: #343a40;
+    color: white;
+
+    &__text {
+        font-size: 18px;
+    }
+
+    &__cost {
+        display: block;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    &__btn {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 3px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+            background-color: #0e73df;
+        }
+    }
+
+    & * {
+        margin-bottom: 25px;
+    }
+}
