@@ -1,16 +1,13 @@
-import { useCartProducts } from "hooks/useCartProducts";
+import CartPreviewProduct from "components/CartPreviewProduct/CartPreviewProduct";
+import { useProducts } from "components/ProductsContext/ProductsContext";
 import React from "react";
 import { Link } from "react-router-dom";
 
-// interface ICart {
-//   setIsCartPreviewOpen: (value: boolean) => void;
-// }
-
 const CartPreview = () => {
-  const cartProducts = useCartProducts();
+  const { productsInCart } = useProducts();
 
   const showCartStatusBySuitableElement =
-    cartProducts.length > 0 ? (
+    productsInCart.length > 0 ? (
       <Link to="/cart">
         <button className="cart-preview__btn">Go To Cart</button>
       </Link>
@@ -20,7 +17,9 @@ const CartPreview = () => {
 
   return (
     <div className="cart-preview">
-      {cartProducts}
+      {productsInCart.map((product, key) => (
+        <CartPreviewProduct {...product} index={key} key={key} />
+      ))}
       {showCartStatusBySuitableElement}
     </div>
   );

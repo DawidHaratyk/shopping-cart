@@ -8,21 +8,23 @@ interface IFiltersState {
   filters: IFilters;
 }
 
-const Products: React.FC<IFiltersState> = ({ filters }) => {
+const Products = ({ filters }: IFiltersState) => {
   const { products } = useProducts();
 
-  let numbersArray: number[] = [];
+  const sortedProducts = () => {
+    if (filters.price !== "default") {
+      return products.sort(
+        (currentProduct, nextProduct) =>
+          (filters.price === "ascending" ? currentProduct : nextProduct).price -
+          (filters.price === "ascending" ? nextProduct : currentProduct).price
+      );
+    } else return products;
+  };
 
-  const productsList = products.map((item, key) => {
+  const newSortedProducts = sortedProducts();
+
+  const productsList = newSortedProducts.map((item, key) => {
     const { name, price, type, image } = item;
-
-    numbersArray.push(price);
-    let number = Math.min(...numbersArray);
-    console.log(numbersArray.filter((e) => e !== number));
-
-    if (filters.price === "ascending") {
-    } else if (filters.price === "descending") {
-    }
 
     const starsList = [1, 2, 3, 4, 5].map((arrayElement, index) => {
       if (item.stars - 1 >= index) {

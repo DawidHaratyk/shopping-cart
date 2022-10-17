@@ -11,8 +11,8 @@ interface IProduct {
 }
 
 const Product = ({ name, price, type, image, stars, index }: IProduct) => {
-  // const [isProductInCart, setIsProductInCart] = useState(false);
-  const { products, setProducts } = useProducts();
+  const { products, setProducts, productsInCart, setProductsInCart } =
+    useProducts();
 
   const isCurrentProductInCart = products[index].isProductInCart;
 
@@ -24,36 +24,26 @@ const Product = ({ name, price, type, image, stars, index }: IProduct) => {
     : "Add to Cart";
 
   const handleAddOrRemoveItemFromTheCart = () => {
-    setProducts((oldProducts) => [
-      ...oldProducts,
-      {
-        ...oldProducts[index],
-        isProductInCart: !oldProducts[index].isProductInCart,
-      },
-    ]);
+    // is it the best way to change one value in array of objects?
+    products[index].isProductInCart = !products[index].isProductInCart;
+    setProducts((oldProducts) => [...oldProducts]);
 
-    // if (!isCurrentProductInCart) {
-    //   setProductsInCart((prevState) => [
-    //     ...prevState,
-    //     {
-    //       name: name,
-    //       price: price,
-    //       type: type,
-    //       image: image,
-    //       stars: stars.length,
-    //     },
-    //   ]);
-    // } else {
-    //   const handleDeleteItem = () => {
-    //     products.map((item, key) => {
-    //       if (name === item.name) {
-    //         products.splice(key, 1);
-    //         setProductsInCart((prevState) => [...prevState]);
-    //       }
-    //     });
-    //   };
-    //   handleDeleteItem();
-    // }
+    if (!isCurrentProductInCart) {
+      console.log(products[index]);
+
+      setProductsInCart((oldProductsInCart) => [
+        ...oldProductsInCart,
+        products[index],
+      ]);
+    } else {
+      const productInCartIndexToRemove = productsInCart.findIndex(
+        (productInCart) => productInCart.name === name
+      );
+
+      productsInCart.splice(productInCartIndexToRemove, 1);
+
+      setProductsInCart((oldProductsInCart) => [...oldProductsInCart]);
+    }
   };
 
   return (

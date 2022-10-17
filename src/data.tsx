@@ -19,6 +19,7 @@ export interface IItem {
   stars: number;
   numberOfProducts?: number;
   isProductInCart?: boolean;
+  id: number;
 }
 
 export interface IComponentItem extends Omit<IItem, "stars"> {
@@ -33,7 +34,8 @@ const items: IItem[] = [
     image: shoes1,
     stars: 5,
     numberOfProducts: 1,
-    isProductInCart: true,
+    isProductInCart: false,
+    id: 1,
   },
   {
     name: "Nike Air Max Invigor",
@@ -43,6 +45,7 @@ const items: IItem[] = [
     stars: 3,
     numberOfProducts: 1,
     isProductInCart: false,
+    id: 2,
   },
   {
     name: "Nike Court Royale 2",
@@ -52,6 +55,7 @@ const items: IItem[] = [
     stars: 3,
     numberOfProducts: 1,
     isProductInCart: false,
+    id: 3,
   },
   {
     name: "Nike React Life",
@@ -61,6 +65,7 @@ const items: IItem[] = [
     stars: 1,
     numberOfProducts: 1,
     isProductInCart: false,
+    id: 4,
   },
   {
     name: "Jordan Sport Dri FIT",
@@ -70,6 +75,7 @@ const items: IItem[] = [
     stars: 4,
     numberOfProducts: 1,
     isProductInCart: false,
+    id: 5,
   },
   {
     name: "Jordan",
@@ -79,6 +85,7 @@ const items: IItem[] = [
     stars: 2,
     numberOfProducts: 1,
     isProductInCart: false,
+    id: 6,
   },
   {
     name: "Nike Pro",
@@ -88,6 +95,7 @@ const items: IItem[] = [
     stars: 5,
     numberOfProducts: 1,
     isProductInCart: false,
+    id: 7,
   },
   {
     name: "Nike Sportswear Club Fleece",
@@ -97,6 +105,7 @@ const items: IItem[] = [
     stars: 1,
     numberOfProducts: 1,
     isProductInCart: false,
+    id: 8,
   },
   {
     name: "Nike Sportswear",
@@ -106,6 +115,7 @@ const items: IItem[] = [
     stars: 3,
     numberOfProducts: 1,
     isProductInCart: false,
+    id: 9,
   },
   {
     name: "Paris Saint-Germain",
@@ -115,6 +125,7 @@ const items: IItem[] = [
     stars: 4,
     numberOfProducts: 1,
     isProductInCart: false,
+    id: 10,
   },
 ];
 

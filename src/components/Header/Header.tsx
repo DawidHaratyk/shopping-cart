@@ -1,12 +1,13 @@
+import { useProducts } from "components/ProductsContext/ProductsContext";
 import SearchInput from "components/SearchInput/SearchInput";
-import { useCartProducts } from "hooks/useCartProducts";
+// import { useCartProducts } from "hooks/useCartProducts";
 import React, { useState } from "react";
 import CartPreview from "../CartPreview/CartPreview";
 
 const Header = () => {
   const [isCartPreviewOpen, setIsCartPreviewOpen] = useState(false);
 
-  const cartProducts = useCartProducts();
+  const { productsInCart } = useProducts();
 
   const handleToggleCartPreviewVisibility = () =>
     setIsCartPreviewOpen((prevState) => !prevState);
@@ -17,7 +18,7 @@ const Header = () => {
       <SearchInput />
       <div className="header__cart" onClick={handleToggleCartPreviewVisibility}>
         <i className="fas fa-shopping-cart header__cart-icon"></i>
-        <span className="header__cart-number">{cartProducts.length}</span>
+        <span className="header__cart-number">{productsInCart.length}</span>
         <i className="fas fa-sort-down header__cart-icon"></i>
         {isCartPreviewOpen && <CartPreview />}
       </div>

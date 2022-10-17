@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { IoTrashBinSharp } from "react-icons/io5";
-import ProductContext from "../ProductsContext/ProductsContext";
+import { useProducts } from "../ProductsContext/ProductsContext";
 
-const ProductsInCart: React.FC = () => {
-  const { products } = useContext(ProductContext);
+const ProductsInCart = () => {
+  const { products } = useProducts();
 
   const allProductsInCart = products.map((product) => {
     const { name, image, price, stars, isProductInCart } = product;
