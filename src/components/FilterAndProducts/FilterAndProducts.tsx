@@ -1,3 +1,4 @@
+import Header from "components/Header/Header";
 import React, { useState } from "react";
 import Products from "../Products/Products";
 import ProductsFilter from "../ProductsFilter/ProductsFilter";
@@ -14,10 +15,13 @@ const FilterAndProducts = () => {
   });
 
   return (
-    <div className="filter-and-products">
-      <ProductsFilter filters={filters} setFilters={setFilters} />
-      <Products filters={filters} />
-    </div>
+    <>
+      <Header />
+      <div className="filter-and-products">
+        <ProductsFilter filters={filters} setFilters={setFilters} />
+        <Products filters={filters} />
+      </div>
+    </>
   );
 };
 

@@ -1,30 +1,53 @@
-import React from "react";
+import React, { useMemo, useEffect } from "react";
 import Product from "../Product/Product";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { IFilters } from "components/FilterAndProducts/FilterAndProducts";
 import { useProducts } from "components/ProductsContext/ProductsContext";
+import { IItem } from "data";
 
 interface IFiltersState {
   filters: IFilters;
 }
 
 const Products = ({ filters }: IFiltersState) => {
-  const { products } = useProducts();
+  const {
+    products,
+    filteredProducts,
+    setFilteredProducts,
+    searchedProducts,
+    setSearchedProducts,
+  } = useProducts();
 
-  const sortedProducts = () => {
+  const sortedProducts = useMemo(() => {
+    const sortedProductByCategory = products.filter((product) =>
+      product.type.includes(filters.clothesType)
+    );
+
     if (filters.price !== "default") {
-      return products.sort(
+      return sortedProductByCategory.sort(
         (currentProduct, nextProduct) =>
           (filters.price === "ascending" ? currentProduct : nextProduct).price -
           (filters.price === "ascending" ? nextProduct : currentProduct).price
       );
-    } else return products;
-  };
+    } else return sortedProductByCategory;
+  }, [filters.clothesType, filters.price, products]);
 
-  const newSortedProducts = sortedProducts();
+  useEffect(() => {
+    let array: IItem[] = [];
 
-  const productsList = newSortedProducts.map((item, key) => {
-    const { name, price, type, image } = item;
+    sortedProducts.filter((sortedProduct) => {
+      searchedProducts.forEach((searchedProduct) => {
+        if (searchedProduct.name === sortedProduct.name) {
+          array.push(sortedProduct);
+        }
+      });
+    });
+
+    setFilteredProducts(array);
+  }, [searchedProducts, sortedProducts]);
+
+  const productsList = filteredProducts.map((item, key) => {
+    const { name, price, type, image, isProductInCart, id } = item;
 
     const starsList = [1, 2, 3, 4, 5].map((arrayElement, index) => {
       if (item.stars - 1 >= index) {
@@ -40,8 +63,9 @@ const Products = ({ filters }: IFiltersState) => {
         price={price}
         type={type}
         image={image}
+        isProductInCart={isProductInCart}
         stars={starsList}
-        index={key}
+        index={id}
         key={key}
       />
     );

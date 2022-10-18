@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useProducts } from "components/ProductsContext/ProductsContext";
 
 interface IProduct {
@@ -6,34 +6,44 @@ interface IProduct {
   price: number;
   type: string;
   image: string;
+  isProductInCart: boolean;
   stars: JSX.Element[];
   index: number;
 }
 
-const Product = ({ name, price, type, image, stars, index }: IProduct) => {
+const Product = ({
+  name,
+  price,
+  type,
+  image,
+  isProductInCart,
+  stars,
+  index,
+}: IProduct) => {
   const { products, setProducts, productsInCart, setProductsInCart } =
     useProducts();
 
-  const isCurrentProductInCart = products[index].isProductInCart;
+  const currentProductIndex = index - 1;
 
-  const buttonClasses = isCurrentProductInCart
+  const buttonClasses = isProductInCart
     ? "product__btn product__btn-red"
     : "product__btn";
-  const buttonTextContent = isCurrentProductInCart
+  const buttonTextContent = isProductInCart
     ? "Remove from Cart"
     : "Add to Cart";
 
   const handleAddOrRemoveItemFromTheCart = () => {
+    console.log(products[currentProductIndex]);
+
     // is it the best way to change one value in array of objects?
-    products[index].isProductInCart = !products[index].isProductInCart;
+    products[currentProductIndex].isProductInCart =
+      !products[currentProductIndex].isProductInCart;
     setProducts((oldProducts) => [...oldProducts]);
 
-    if (!isCurrentProductInCart) {
-      console.log(products[index]);
-
+    if (!isProductInCart) {
       setProductsInCart((oldProductsInCart) => [
         ...oldProductsInCart,
-        products[index],
+        products[currentProductIndex],
       ]);
     } else {
       const productInCartIndexToRemove = productsInCart.findIndex(

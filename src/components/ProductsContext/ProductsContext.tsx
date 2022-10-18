@@ -6,6 +6,10 @@ interface IProducts {
   setProducts: Dispatch<SetStateAction<IItem[]>>;
   productsInCart: IItem[];
   setProductsInCart: Dispatch<SetStateAction<IItem[]>>;
+  filteredProducts: IItem[];
+  setFilteredProducts: Dispatch<SetStateAction<IItem[]>>;
+  searchedProducts: IItem[];
+  setSearchedProducts: Dispatch<SetStateAction<IItem[]>>;
 }
 
 const ProductContext = createContext<IProducts | null>(null);

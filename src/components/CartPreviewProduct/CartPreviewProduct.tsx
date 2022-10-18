@@ -1,4 +1,3 @@
-// import { useCartProducts } from "hooks/useCartProducts";
 import React from "react";
 import { IoTrashBinSharp } from "react-icons/io5";
 import { useProducts } from "../ProductsContext/ProductsContext";
@@ -18,17 +17,18 @@ const CartPreviewProduct = ({
 }: ICartPreviewProduct) => {
   const { products, setProducts, productsInCart, setProductsInCart } =
     useProducts();
+  // try to do a global reducer
 
   const handleDeleteProductFromCart = () => {
     const correctProductIndex = productsInCart[index].id - 1;
-    console.log(correctProductIndex);
 
-    // try to do a global reducer
+    const foundCorrectProductIndex = products.findIndex(
+      (product) => product.id - 1 === correctProductIndex
+    );
 
-    //change button state
-    //there is incorrect index when sorting
-    products[correctProductIndex].isProductInCart =
-      !products[correctProductIndex].isProductInCart;
+    // change button state
+    products[foundCorrectProductIndex].isProductInCart =
+      !products[foundCorrectProductIndex].isProductInCart;
 
     setProducts((oldProducts) => [...oldProducts]);
 

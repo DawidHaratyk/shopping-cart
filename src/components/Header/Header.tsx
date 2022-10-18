@@ -1,6 +1,5 @@
 import { useProducts } from "components/ProductsContext/ProductsContext";
 import SearchInput from "components/SearchInput/SearchInput";
-// import { useCartProducts } from "hooks/useCartProducts";
 import React, { useState } from "react";
 import CartPreview from "../CartPreview/CartPreview";
 
