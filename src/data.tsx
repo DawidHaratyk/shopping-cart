@@ -17,9 +17,10 @@ export interface IItem {
   type: string;
   image: string;
   stars: number;
-  numberOfProducts?: number;
   isProductInCart: boolean;
   id: number;
+  availableAmount: number;
+  amountInCart: number;
 }
 
 export interface IComponentItem extends Omit<IItem, "stars"> {
@@ -33,9 +34,10 @@ const items: IItem[] = [
     type: "everything, shoes",
     image: shoes1,
     stars: 5,
-    numberOfProducts: 3,
     isProductInCart: false,
     id: 1,
+    availableAmount: 5,
+    amountInCart: 1,
   },
   {
     name: "Nike Air Max Invigor",
@@ -43,9 +45,10 @@ const items: IItem[] = [
     type: "everything, shoes",
     image: shoes2,
     stars: 3,
-    numberOfProducts: 1,
     isProductInCart: false,
     id: 2,
+    availableAmount: 3,
+    amountInCart: 1,
   },
   {
     name: "Nike Court Royale 2",
@@ -53,9 +56,10 @@ const items: IItem[] = [
     type: "everything, shoes",
     image: shoes3,
     stars: 3,
-    numberOfProducts: 5,
     isProductInCart: false,
     id: 3,
+    availableAmount: 10,
+    amountInCart: 1,
   },
   {
     name: "Nike React Life",
@@ -63,9 +67,10 @@ const items: IItem[] = [
     type: "everything, shoes",
     image: shoes4,
     stars: 1,
-    numberOfProducts: 2,
     isProductInCart: false,
     id: 4,
+    availableAmount: 10,
+    amountInCart: 1,
   },
   {
     name: "Jordan Sport Dri FIT",
@@ -73,9 +78,10 @@ const items: IItem[] = [
     type: "everything, trousers",
     image: trousers1,
     stars: 4,
-    numberOfProducts: 6,
     isProductInCart: false,
     id: 5,
+    availableAmount: 6,
+    amountInCart: 1,
   },
   {
     name: "Jordan",
@@ -83,9 +89,10 @@ const items: IItem[] = [
     type: "everything, trousers",
     image: trousers2,
     stars: 2,
-    numberOfProducts: 1,
     isProductInCart: false,
     id: 6,
+    availableAmount: 2,
+    amountInCart: 1,
   },
   {
     name: "Nike Pro",
@@ -93,9 +100,10 @@ const items: IItem[] = [
     type: "everything, trousers",
     image: trousers3,
     stars: 5,
-    numberOfProducts: 3,
     isProductInCart: false,
     id: 7,
+    availableAmount: 4,
+    amountInCart: 1,
   },
   {
     name: "Nike Sportswear Club Fleece",
@@ -103,9 +111,10 @@ const items: IItem[] = [
     type: "everything, trousers",
     image: trousers4,
     stars: 1,
-    numberOfProducts: 1,
     isProductInCart: false,
     id: 8,
+    availableAmount: 14,
+    amountInCart: 1,
   },
   {
     name: "Nike Sportswear",
@@ -113,9 +122,10 @@ const items: IItem[] = [
     type: "everything, trousers",
     image: trousers5,
     stars: 3,
-    numberOfProducts: 12,
     isProductInCart: false,
     id: 9,
+    availableAmount: 1,
+    amountInCart: 1,
   },
   {
     name: "Paris Saint-Germain",
@@ -123,9 +133,10 @@ const items: IItem[] = [
     type: "everything, trousers",
     image: trousers6,
     stars: 4,
-    numberOfProducts: 7,
     isProductInCart: false,
     id: 10,
+    availableAmount: 2,
+    amountInCart: 1,
   },
 ];
 
