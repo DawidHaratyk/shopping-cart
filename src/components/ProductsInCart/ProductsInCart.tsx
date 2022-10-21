@@ -2,9 +2,12 @@ import React from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { IoTrashBinSharp } from "react-icons/io5";
 import { useProducts } from "../ProductsContext/ProductsContext";
+import { useRemoveProductFromCart } from "../../hooks/useRemoveProductFromCart";
 
 const ProductsInCart = () => {
   const { productsInCart, setProductsInCart } = useProducts();
+
+  const handleRemoveProductFromCart = useRemoveProductFromCart();
 
   const allProductsInCart = productsInCart.map((productInCart, key) => {
     const { name, image, price, stars, availableAmount, amountInCart } =
@@ -51,7 +54,10 @@ const ProductsInCart = () => {
         >
           {availableAmountItems}
         </select>
-        <IoTrashBinSharp className="product__delete" />
+        <IoTrashBinSharp
+          className="product__delete"
+          onClick={() => handleRemoveProductFromCart(key)}
+        />
       </div>
     );
   });

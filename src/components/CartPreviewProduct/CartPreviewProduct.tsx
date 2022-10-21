@@ -1,6 +1,6 @@
+import { useRemoveProductFromCart } from "hooks/useRemoveProductFromCart";
 import React from "react";
 import { IoTrashBinSharp } from "react-icons/io5";
-import { useProducts } from "../ProductsContext/ProductsContext";
 
 interface ICartPreviewProduct {
   name: string;
@@ -15,28 +15,7 @@ const CartPreviewProduct = ({
   image,
   index,
 }: ICartPreviewProduct) => {
-  const { products, setProducts, productsInCart, setProductsInCart } =
-    useProducts();
-  // try to do a global reducer
-
-  const handleDeleteProductFromCart = () => {
-    const correctProductIndex = productsInCart[index].id - 1;
-
-    const foundCorrectProductIndex = products.findIndex(
-      (product) => product.id - 1 === correctProductIndex
-    );
-
-    // change button state
-    products[foundCorrectProductIndex].isProductInCart =
-      !products[foundCorrectProductIndex].isProductInCart;
-
-    setProducts((oldProducts) => [...oldProducts]);
-
-    // remove correct element from cart
-    productsInCart.splice(index, 1);
-
-    setProductsInCart((oldProductsInCart) => [...oldProductsInCart]);
-  };
+  const handleRemoveProductFromCart = useRemoveProductFromCart();
 
   return (
     <div className="product">
@@ -47,7 +26,7 @@ const CartPreviewProduct = ({
       </div>
       <IoTrashBinSharp
         className="product__delete"
-        onClick={handleDeleteProductFromCart}
+        onClick={() => handleRemoveProductFromCart(index)}
       />
     </div>
   );
