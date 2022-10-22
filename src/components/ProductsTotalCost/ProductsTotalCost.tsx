@@ -1,19 +1,7 @@
-import { useProducts } from "components/ProductsContext/ProductsContext";
-import React from "react";
+import { useProductsTotalCostValues } from "./useProductsTotalCostValues";
 
 const ProductsTotalCost = () => {
-  const { productsInCart } = useProducts();
-
-  const totalCost = productsInCart.reduce((total, productInCart) => {
-    const calculatedPriceForProduct =
-      productInCart.price * productInCart.amountInCart;
-
-    return total + calculatedPriceForProduct;
-  }, 0);
-
-  const allOrderedItems = productsInCart.reduce((total, productInCart) => {
-    return total + productInCart.amountInCart;
-  }, 0);
+  const { totalCost, allOrderedItems } = useProductsTotalCostValues();
 
   return (
     <div className="products-total">

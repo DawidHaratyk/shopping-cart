@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import CartPreview from "../CartPreview/CartPreview";
 
 const Header = () => {
-  const [isCartPreviewOpen, setIsCartPreviewOpen] = useState(false);
-
   const { productsInCart } = useProducts();
+  
+  const [isCartPreviewOpen, setIsCartPreviewOpen] = useState(false);
 
   const handleToggleCartPreviewVisibility = () =>
     setIsCartPreviewOpen((prevState) => !prevState);

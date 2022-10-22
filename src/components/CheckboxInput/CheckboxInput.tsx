@@ -6,15 +6,6 @@ interface CheckboxInputI {
     price: string,
     id: number
   ) => void;
-  setAllCheckboxes: React.Dispatch<
-    React.SetStateAction<
-      {
-        priceOrder: string;
-        isChecked: boolean;
-        id: number;
-      }[]
-    >
-  >;
   isChecked: boolean;
   priceOrder: string;
   id: number;
@@ -22,7 +13,6 @@ interface CheckboxInputI {
 
 function CheckboxInput({
   handleFiltersChange,
-  setAllCheckboxes,
   isChecked,
   priceOrder,
   id,

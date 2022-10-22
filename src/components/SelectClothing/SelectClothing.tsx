@@ -1,4 +1,4 @@
-import { IFilters } from "components/FilterAndProducts/FilterAndProducts";
+import { IFilters } from "types/index";
 import React from "react";
 
 interface SelectClothingI {

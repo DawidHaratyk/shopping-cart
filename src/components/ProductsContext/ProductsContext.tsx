@@ -1,15 +1,17 @@
 import { createContext, useContext, Dispatch, SetStateAction } from "react";
 import { IItem } from "data";
 
+type DispatchIItemArrayI = Dispatch<SetStateAction<IItem[]>>
+
 interface IProducts {
   products: IItem[];
-  setProducts: Dispatch<SetStateAction<IItem[]>>;
+  setProducts: DispatchIItemArrayI;
   productsInCart: IItem[];
-  setProductsInCart: Dispatch<SetStateAction<IItem[]>>;
+  setProductsInCart: DispatchIItemArrayI;
   filteredProducts: IItem[];
-  setFilteredProducts: Dispatch<SetStateAction<IItem[]>>;
+  setFilteredProducts: DispatchIItemArrayI;
   searchedProducts: IItem[];
-  setSearchedProducts: Dispatch<SetStateAction<IItem[]>>;
+  setSearchedProducts: DispatchIItemArrayI;
 }
 
 const ProductContext = createContext<IProducts | null>(null);

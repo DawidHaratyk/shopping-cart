@@ -3,13 +3,8 @@ import React, { useState } from "react";
 import Products from "../Products/Products";
 import ProductsFilter from "../ProductsFilter/ProductsFilter";
 
-export interface IFilters {
-  price: string;
-  clothesType: string;
-}
-
 const FilterAndProducts = () => {
-  const [filters, setFilters] = useState<IFilters>({
+  const [filters, setFilters] = useState({
     price: "default",
     clothesType: "everything",
   });

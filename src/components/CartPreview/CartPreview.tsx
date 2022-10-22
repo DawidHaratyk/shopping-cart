@@ -6,8 +6,10 @@ import { Link } from "react-router-dom";
 const CartPreview = () => {
   const { productsInCart } = useProducts();
 
+  const cartHasProducts = productsInCart.length > 0;
+
   const showCartStatusBySuitableElement =
-    productsInCart.length > 0 ? (
+  cartHasProducts ? (
       <Link to="/cart">
         <button className="cart-preview__btn">Go To Cart</button>
       </Link>
