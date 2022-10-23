@@ -1,6 +1,4 @@
-import React from "react";
-import { useProducts } from "components/ProductsContext/ProductsContext";
-import { useProductValues } from "hooks/useProductValues";
+import { useProductValues } from "./useProductValues";
 
 interface IProduct {
   name: string;
@@ -19,8 +17,8 @@ const Product = ({
   isProductInCart,
   id,
 }: IProduct) => {
-
-  const { buttonClasses, buttonTextContent, handleAddOrRemoveItemFromTheCart } = useProductValues(isProductInCart, name, id)
+  const { buttonClasses, buttonTextContent, handleAddOrRemoveItemFromTheCart } =
+    useProductValues(isProductInCart, name, id);
 
   return (
     <div className="product">

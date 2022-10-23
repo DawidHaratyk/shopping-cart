@@ -1,4 +1,4 @@
-import { useProductsInCartValues } from "hooks/useProductsInCartValues";
+import { useProductsInCartValues } from "./useProductsInCartValues";
 
 const ProductsInCart = () => {
   const { allProductsInCart } = useProductsInCartValues();

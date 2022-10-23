@@ -1,8 +1,8 @@
 import { ICheckbox, IFiltersState } from "types/index";
 import SelectClothing from "components/SelectClothing/SelectClothing";
-import { useProductsFiltersValues } from "hooks/useProductsFilterValues";
 import AllCheckboxes from "components/AllCheckboxes/AllCheckboxes";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useProductsFiltersValues } from "./useProductsFilterValues";
 
 const ProductsFilter = ({ filters, setFilters }: IFiltersState) => {
   const [allCheckboxes, setAllCheckboxes] = useState<ICheckbox[]>([

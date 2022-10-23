@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { IFilters } from "types/index";
 import { useProducts } from "components/ProductsContext/ProductsContext";
 import { IItem } from "data";
-import { useProductsValues } from "hooks/useProductsValues";
+import { useProductsValues } from "./useProductsValues";
 
 interface IFiltersState {
   filters: IFilters;

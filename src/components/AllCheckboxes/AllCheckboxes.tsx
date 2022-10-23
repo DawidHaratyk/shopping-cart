@@ -1,15 +1,18 @@
-import { useAllCheckboxesValues } from 'hooks/useAllCheckboxesValues';
-import { ProductsFiltersValuesI } from 'types';
+import { ProductsFiltersValuesI } from "types";
+import { useAllCheckboxesValues } from "./useAllCheckboxesValues";
 
-function AllCheckboxes({ allCheckboxes, setAllCheckboxes, setFilters }: ProductsFiltersValuesI) {
+function AllCheckboxes({
+  allCheckboxes,
+  setAllCheckboxes,
+  setFilters,
+}: ProductsFiltersValuesI) {
+  const { allCheckboxesInputs } = useAllCheckboxesValues({
+    allCheckboxes,
+    setAllCheckboxes,
+    setFilters,
+  });
 
-  const { allCheckboxesInputs } = useAllCheckboxesValues({ allCheckboxes, setAllCheckboxes, setFilters })
-
-  return (
-      <>
-        {allCheckboxesInputs}
-     </>
-  )
+  return <>{allCheckboxesInputs}</>;
 }
 
-export default AllCheckboxes
+export default AllCheckboxes;
