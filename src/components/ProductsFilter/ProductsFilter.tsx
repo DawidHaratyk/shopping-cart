@@ -2,7 +2,7 @@ import { ICheckbox, IFiltersState } from "types/index";
 import SelectClothing from "components/SelectClothing/SelectClothing";
 import { useProductsFiltersValues } from "hooks/useProductsFilterValues";
 import AllCheckboxes from "components/AllCheckboxes/AllCheckboxes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ProductsFilter = ({ filters, setFilters }: IFiltersState) => {
   const [allCheckboxes, setAllCheckboxes] = useState<ICheckbox[]>([
@@ -18,12 +18,20 @@ const ProductsFilter = ({ filters, setFilters }: IFiltersState) => {
     },
   ]);
 
-  const { handleClearFilters } = useProductsFiltersValues({ setFilters, allCheckboxes, setAllCheckboxes })
+  const { handleClearFilters } = useProductsFiltersValues({
+    setFilters,
+    allCheckboxes,
+    setAllCheckboxes,
+  });
 
   return (
     <div className="filter">
       <h4 className="filter__headline">Filter Products</h4>
-      <AllCheckboxes allCheckboxes={allCheckboxes} setAllCheckboxes={setAllCheckboxes} setFilters={setFilters} />
+      <AllCheckboxes
+        allCheckboxes={allCheckboxes}
+        setAllCheckboxes={setAllCheckboxes}
+        setFilters={setFilters}
+      />
       <SelectClothing filters={filters} setFilters={setFilters} />
       <button className="filter__btn" onClick={handleClearFilters}>
         Clear Filters
