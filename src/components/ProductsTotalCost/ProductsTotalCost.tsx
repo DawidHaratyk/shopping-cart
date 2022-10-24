@@ -1,6 +1,10 @@
 import { useProductsTotalCostValues } from "./useProductsTotalCostValues";
 
-const ProductsTotalCost = () => {
+interface ProductsTotalCostI {
+  setIsOrderMade: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const ProductsTotalCost = ({ setIsOrderMade }: ProductsTotalCostI) => {
   const { totalCost, allOrderedItems } = useProductsTotalCostValues();
 
   return (
@@ -11,7 +15,7 @@ const ProductsTotalCost = () => {
       <span className="products-total__cost">Total: ${totalCost}</span>
       <button
         className="products-total__btn"
-        onClick={() => alert(`You have ordered ${allOrderedItems} items `)}
+        onClick={() => setIsOrderMade(true)}
       >
         Proceed to Checkout
       </button>

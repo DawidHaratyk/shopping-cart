@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import ProductsInCart from "../ProductsInCart/ProductsInCart";
 import ProductsTotalCost from "../ProductsTotalCost/ProductsTotalCost";
 import leftArrow from "../../images/left-arrow.png";
 import { useNavigate } from "react-router-dom";
+import TransactionModal from "components/TransactionModal/TransactionModal";
 
 const UserCart = () => {
+  const [isOrderMade, setIsOrderMade] = useState(false);
+
   const navigate = useNavigate();
 
   const handleGoBackToPreviousPage = () => {
@@ -24,8 +27,14 @@ const UserCart = () => {
       </div>
       <div className="user-cart">
         <ProductsInCart />
-        <ProductsTotalCost />
+        <ProductsTotalCost setIsOrderMade={setIsOrderMade} />
       </div>
+      {isOrderMade && (
+        <TransactionModal
+          setIsOrderMade={setIsOrderMade}
+          handleGoBackToPreviousPage={handleGoBackToPreviousPage}
+        />
+      )}
     </>
   );
 };
