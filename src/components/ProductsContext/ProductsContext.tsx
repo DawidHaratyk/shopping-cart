@@ -1,7 +1,15 @@
-import { createContext, useContext, Dispatch, SetStateAction } from "react";
-import { IItem } from "data";
+import {
+  createContext,
+  useContext,
+  Dispatch,
+  SetStateAction,
+  useState,
+  ReactNode,
+} from "react";
+import items, { IItem } from "data";
+import { BrowserRouter } from "react-router-dom";
 
-type DispatchIItemArrayI = Dispatch<SetStateAction<IItem[]>>
+type DispatchIItemArrayI = Dispatch<SetStateAction<IItem[]>>;
 
 interface IProducts {
   products: IItem[];
@@ -14,7 +22,37 @@ interface IProducts {
   setSearchedProducts: DispatchIItemArrayI;
 }
 
+interface ChildrenI {
+  children: ReactNode;
+}
+
 const ProductContext = createContext<IProducts | null>(null);
+
+export const ProductProvider = ({ children }: ChildrenI) => {
+  const [products, setProducts] = useState(items);
+  const [productsInCart, setProductsInCart] = useState<IItem[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState(items);
+  const [searchedProducts, setSearchedProducts] = useState(items);
+
+  return (
+    <BrowserRouter>
+      <ProductContext.Provider
+        value={{
+          products,
+          setProducts,
+          productsInCart,
+          setProductsInCart,
+          filteredProducts,
+          setFilteredProducts,
+          searchedProducts,
+          setSearchedProducts,
+        }}
+      >
+        {children}
+      </ProductContext.Provider>
+    </BrowserRouter>
+  );
+};
 
 export const useProducts = () => {
   const productsContext = useContext(ProductContext);
