@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useProductsFiltersValues } from "./useProductsFilterValues";
 
 const ProductsFilter = ({ filters, setFilters }: IFiltersState) => {
+  // usun allCheckboxes ponieważ jest nie potrzebne, sprawdz po co to jest
   const [allCheckboxes, setAllCheckboxes] = useState<ICheckbox[]>([
     {
       priceOrder: "ascending",

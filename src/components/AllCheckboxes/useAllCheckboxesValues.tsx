@@ -34,6 +34,7 @@ export const useAllCheckboxesValues = ({
       })
     );
   };
+  
 
   const allCheckboxesInputs = allCheckboxes.map((checkbox, key) => (
     <CheckboxInput

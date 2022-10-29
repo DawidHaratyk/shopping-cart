@@ -4,7 +4,7 @@ import { renderComponent } from 'utils/renderComponent'
 import AllCheckboxes from '../AllCheckboxes'
 
 describe('AllCheckboxes', () => {
-  test('cos', () => {
+  test('validate checkbox checked value on action (click)', async () => {
     const mockSetAllCheckboxes = jest.fn()
     const mockSetFilters = jest.fn()
 
@@ -27,9 +27,11 @@ describe('AllCheckboxes', () => {
       />
     )
 
+    // test amount of checkboxes
     const allCheckboxes = screen.getAllByRole('checkbox')
     expect(allCheckboxes).toHaveLength(2)
 
+    // test if checkboxes are checked on initial render
     const withinFirstCheckboxView = screen.getByText(/ascending/i)
     const firstCheckbox = within(withinFirstCheckboxView).getByRole('checkbox')
     expect(firstCheckbox).toBeChecked()
@@ -40,12 +42,17 @@ describe('AllCheckboxes', () => {
     )
     expect(secondCheckbox).not.toBeChecked()
 
+    // test results on action (click)
     userEvent.click(firstCheckbox)
     expect(mockSetAllCheckboxes).toHaveBeenCalledTimes(1)
     expect(mockSetFilters).toHaveBeenCalledTimes(0)
+    expect(firstCheckbox).toBeChecked()
+    expect(secondCheckbox).not.toBeChecked()
 
-    userEvent.click(secondCheckbox)
+    await userEvent.click(secondCheckbox)
     expect(mockSetAllCheckboxes).toHaveBeenCalledTimes(2)
     expect(mockSetFilters).toHaveBeenCalledTimes(1)
+    expect(firstCheckbox).not.toBeChecked()
+    expect(secondCheckbox).toBeChecked()
   })
 })

@@ -17,6 +17,7 @@ function CheckboxInput({
   priceOrder,
   id,
 }: CheckboxInputI) {
+  
   return (
     <label htmlFor="price" className="filter__label">
       <input
