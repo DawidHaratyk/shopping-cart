@@ -1,16 +1,20 @@
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import FilterAndProducts from "./components/FilterAndProducts/FilterAndProducts";
 import UserCart from "./components/UserCart/UserCart";
-import { ProductProvider } from "./components/ProductsContext/ProductsContext";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <ProductProvider>
-      <Routes>
-        <Route path="/" element={<FilterAndProducts />} />
-        <Route path="/cart" element={<UserCart />} />
-      </Routes>
-    </ProductProvider>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<FilterAndProducts />} />
+          <Route path="/cart" element={<UserCart />} />
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 };
 

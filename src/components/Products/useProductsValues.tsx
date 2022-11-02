@@ -1,40 +1,64 @@
 import Product from "components/Product/Product";
-import { useProducts } from "components/ProductsContext/ProductsContext";
-import { useMemo } from "react";
 import { IFilters } from "types";
 import { useStars } from "../../hooks/useStars";
+import { useStock } from "hooks/useStock";
+import { useFilteredProducts } from "hooks/useFilteredProducts";
 
 export const useProductsValues = (filters: IFilters) => {
+  const { products, isError, isLoading } = useStock();
+
+  const cos = useFilteredProducts();
+
+  console.log(cos);
+
   const { handleStarsList } = useStars();
 
-  const { products, filteredProducts } = useProducts();
-
-  const sortedProducts = useMemo(() => {
-    const isSortedByPrice = filters.price !== "default";
-
-    const sortedProductByCategory = products.filter((product) =>
+  if (products) {
+    const sortedProductsByCategory = products.filter((product) =>
       product.type.includes(filters.clothesType)
     );
+  }
 
-    if (isSortedByPrice) {
-      return sortedProductByCategory.sort((currentProduct, nextProduct) => {
-        const determinedProductPrice = (
-          filters.price === "ascending" ? currentProduct : nextProduct
-        ).price;
-        const determinedSubtractedProductPrize = (
-          filters.price === "ascending" ? nextProduct : currentProduct
-        ).price;
+  // const sortedProducts = useMemo(() => {
+  //   const isSortedByPrice = filters.price !== "default";
 
-        return determinedProductPrice - determinedSubtractedProductPrize;
-      });
-    } else return sortedProductByCategory;
-  }, [filters.clothesType, filters.price, products]);
+  //   const sortedProductByCategory = products.filter((product) =>
+  //     product.type.includes(filters.clothesType)
+  //   );
 
-  const productsList = filteredProducts.map((item, key) => {
+  //   if (isSortedByPrice) {
+  //     return sortedProductByCategory.sort((currentProduct, nextProduct) => {
+  //       const determinedProductPrice = (
+  //         filters.price === "ascending" ? currentProduct : nextProduct
+  //       ).price;
+  //       const determinedSubtractedProductPrize = (
+  //         filters.price === "ascending" ? nextProduct : currentProduct
+  //       ).price;
+
+  //       return determinedProductPrice - determinedSubtractedProductPrize;
+  //     });
+  //   } else return sortedProductByCategory;
+  // }, [filters.clothesType, filters.price, products]);
+
+  const productsList = products?.map((item, key) => {
     const starsList = handleStarsList(item);
 
     return <Product {...item} starsList={starsList} key={key} />;
   });
 
-  return { sortedProducts, productsList };
+  // useEffect(() => {
+  //   let sortedAndSearchedProducts: IItem[] = [];
+
+  //   sortedProducts.filter((sortedProduct) => {
+  //     searchedProducts.forEach((searchedProduct) => {
+  //       if (searchedProduct.name === sortedProduct.name) {
+  //         sortedAndSearchedProducts.push(sortedProduct);
+  //       }
+  //     });
+  //   });
+
+  //   setFilteredProducts(sortedAndSearchedProducts);
+  // }, [searchedProducts, sortedProducts]);
+
+  return { productsList, isError, isLoading };
 };

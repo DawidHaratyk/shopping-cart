@@ -15,18 +15,18 @@ const CartPreviewProduct = ({
   image,
   index,
 }: ICartPreviewProduct) => {
-  const handleRemoveProductFromCart = useRemoveProductFromCart();
+  // const handleRemoveProductFromCart = useRemoveProductFromCart();
 
   return (
     <div className="product">
-      <img src={image} alt={name} className="product__img" /> 
+      <img src={image} alt={name} className="product__img" />
       <div className="product__name-container">
         <h5 className="product__name">{name}</h5>
         <span className="product__span">${price}</span>
       </div>
       <IoTrashBinSharp
         className="product__delete"
-        onClick={() => handleRemoveProductFromCart(index)}
+        // onClick={() => handleRemoveProductFromCart(index)}
       />
     </div>
   );

@@ -1,23 +1,22 @@
-import { screen, within } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { renderComponent } from 'utils/renderComponent'
-import AllCheckboxes from '../AllCheckboxes'
+import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import AllCheckboxes from "../AllCheckboxes";
 
-describe('AllCheckboxes', () => {
-  test('validate checkbox checked value on action (click)', async () => {
-    const mockSetAllCheckboxes = jest.fn()
-    const mockSetFilters = jest.fn()
+describe("AllCheckboxes", () => {
+  test("validate checkbox checked value on action (click)", () => {
+    const mockSetAllCheckboxes = jest.fn();
+    const mockSetFilters = jest.fn();
 
-    renderComponent(
+    render(
       <AllCheckboxes
         allCheckboxes={[
           {
-            priceOrder: 'ascending',
+            priceOrder: "ascending",
             isChecked: true,
             id: 0,
           },
           {
-            priceOrder: 'descending',
+            priceOrder: "descending",
             isChecked: false,
             id: 1,
           },
@@ -25,34 +24,30 @@ describe('AllCheckboxes', () => {
         setAllCheckboxes={mockSetAllCheckboxes}
         setFilters={mockSetFilters}
       />
-    )
+    );
 
     // test amount of checkboxes
-    const allCheckboxes = screen.getAllByRole('checkbox')
-    expect(allCheckboxes).toHaveLength(2)
+    const allCheckboxes = screen.getAllByRole("checkbox");
+    expect(allCheckboxes).toHaveLength(2);
 
     // test if checkboxes are checked on initial render
-    const withinFirstCheckboxView = screen.getByText(/ascending/i)
-    const firstCheckbox = within(withinFirstCheckboxView).getByRole('checkbox')
-    expect(firstCheckbox).toBeChecked()
+    const withinFirstCheckboxView = screen.getByText(/ascending/i);
+    const firstCheckbox = within(withinFirstCheckboxView).getByRole("checkbox");
+    expect(firstCheckbox).toBeChecked();
 
-    const withinSecondCheckboxView = screen.getByText(/descending/i)
+    const withinSecondCheckboxView = screen.getByText(/descending/i);
     const secondCheckbox = within(withinSecondCheckboxView).getByRole(
-      'checkbox'
-    )
-    expect(secondCheckbox).not.toBeChecked()
+      "checkbox"
+    );
+    expect(secondCheckbox).not.toBeChecked();
 
     // test results on action (click)
-    userEvent.click(firstCheckbox)
-    expect(mockSetAllCheckboxes).toHaveBeenCalledTimes(1)
-    expect(mockSetFilters).toHaveBeenCalledTimes(0)
-    expect(firstCheckbox).toBeChecked()
-    expect(secondCheckbox).not.toBeChecked()
+    userEvent.click(firstCheckbox);
+    expect(mockSetAllCheckboxes).toHaveBeenCalledTimes(1);
+    expect(mockSetFilters).toHaveBeenCalledTimes(0);
 
-    await userEvent.click(secondCheckbox)
-    expect(mockSetAllCheckboxes).toHaveBeenCalledTimes(2)
-    expect(mockSetFilters).toHaveBeenCalledTimes(1)
-    expect(firstCheckbox).not.toBeChecked()
-    expect(secondCheckbox).toBeChecked()
-  })
-})
+    userEvent.click(secondCheckbox);
+    expect(mockSetAllCheckboxes).toHaveBeenCalledTimes(2);
+    expect(mockSetFilters).toHaveBeenCalledTimes(1);
+  });
+});

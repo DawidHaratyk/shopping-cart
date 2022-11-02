@@ -1,27 +1,35 @@
-import { useProducts } from "components/ProductsContext/ProductsContext";
+import { useStock } from "./useStock";
 
 export const useRemoveProductFromCart = () => {
-  const { productsInCart, setProducts, setProductsInCart, products } =
-    useProducts();
+  // const { productsInCart, setProducts, setProductsInCart, products } =
+  //   useStock();
 
-  const handleRemoveProductFromCart = (key: number) => {
-    const correctProductIndex = productsInCart[key].id - 1;
+  const { products } = useStock();
 
-    const foundCorrectProductIndex = products.findIndex(
-      (product) => product.id - 1 === correctProductIndex
-    );
+  // const handleRemoveProductFromCart = (key: number) => {
+  //   const correctProductIndex = productsInCart[key].id - 1;
 
-    // change button state
-    products[foundCorrectProductIndex].isProductInCart =
-      !products[foundCorrectProductIndex].isProductInCart;
+  //   const foundCorrectProductIndex = products.findIndex(
+  //     (product) => product.id - 1 === correctProductIndex
+  //   );
 
-    setProducts((oldProducts) => [...oldProducts]);
+  // change button state
+  // setProducts((prevProducts) => {
+  //   const newProducts = prevProducts.map((product) => {
+  //     if (product.id - 1 === foundCorrectProductIndex) {
+  //       return { ...product, isProductInCart: !product.isProductInCart };
+  //     }
+  //     return product;
+  //   });
 
-    // remove correct element from cart
-    productsInCart.splice(key, 1);
+  //   return newProducts;
+  // });
 
-    setProductsInCart((oldProductsInCart) => [...oldProductsInCart]);
-  };
+  // remove correct element from cart
+  // setProductsInCart((prevProductsInCart) => {
+  //   return prevProductsInCart.filter((_, index) => index !== key);
+  // });
+  // };
 
-  return handleRemoveProductFromCart;
+  // return handleRemoveProductFromCart;
 };

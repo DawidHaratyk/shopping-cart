@@ -9,7 +9,7 @@ function TransactionModal({
   setIsOrderMade,
   handleGoBackToPreviousPage,
 }: TransactionModalI) {
-  const { allOrderedItems } = useProductsTotalCostValues();
+  // const { allOrderedItems } = useProductsTotalCostValues();
 
   const handleCloseModal = () => {
     setIsOrderMade(false);
@@ -19,7 +19,7 @@ function TransactionModal({
     <div className="modal">
       <div className="modal__content">
         <p className="modal__content-text">
-          You have ordered {allOrderedItems} items
+          {/* You have ordered {allOrderedItems} items */}
         </p>
         <button
           className="modal__content-btn"

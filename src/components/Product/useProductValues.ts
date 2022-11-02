@@ -1,8 +1,12 @@
-import { useProducts } from "components/ProductsContext/ProductsContext";
+// import { useProducts } from "components/ProductsContext/ProductsContext";
 
-export const useProductValues = (isProductInCart: boolean, name: string, id: number) => {
-    const { products, setProducts, productsInCart, setProductsInCart } =
-    useProducts();
+export const useProductValues = (
+  isProductInCart: boolean,
+  name: string,
+  id: number
+) => {
+  // const { products, setProducts, productsInCart, setProductsInCart } =
+  // useProducts();
 
   const currentProductIndex = id - 1;
 
@@ -14,27 +18,22 @@ export const useProductValues = (isProductInCart: boolean, name: string, id: num
     : "Add to Cart";
 
   const handleAddOrRemoveItemFromTheCart = () => {
-    
-    // is it the best way to change one value in array of objects?
-    products[currentProductIndex].isProductInCart =
-      !products[currentProductIndex].isProductInCart;
-    setProducts((oldProducts) => [...oldProducts]);
-
-    if (!isProductInCart) {
-      setProductsInCart((oldProductsInCart) => [
-        ...oldProductsInCart,
-        products[currentProductIndex],
-      ]);
-    } else {
-      const productInCartIndexToRemove = productsInCart.findIndex(
-        (productInCart) => productInCart.name === name
-      );
-
-      productsInCart.splice(productInCartIndexToRemove, 1);
-
-      setProductsInCart((oldProductsInCart) => [...oldProductsInCart]);
-    }
+    // products[currentProductIndex].isProductInCart =
+    //   !products[currentProductIndex].isProductInCart;
+    // setProducts((oldProducts) => [...oldProducts]);
+    // if (!isProductInCart) {
+    //   setProductsInCart((oldProductsInCart) => [
+    //     ...oldProductsInCart,
+    //     products[currentProductIndex],
+    //   ]);
+    // } else {
+    //   const productInCartIndexToRemove = productsInCart.findIndex(
+    //     (productInCart) => productInCart.name === name
+    //   );
+    //   productsInCart.splice(productInCartIndexToRemove, 1);
+    //   setProductsInCart((oldProductsInCart) => [...oldProductsInCart]);
+    // }
   };
 
-  return { buttonClasses, buttonTextContent, handleAddOrRemoveItemFromTheCart }
-}
+  return { buttonClasses, buttonTextContent, handleAddOrRemoveItemFromTheCart };
+};

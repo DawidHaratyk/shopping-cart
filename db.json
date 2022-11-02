@@ -1,0 +1,116 @@
+{
+  "products": [
+    {
+      "name": "Nike Air Max AP",
+      "price": 399,
+      "type": "everything, shoes",
+      "image": "images/nike-air-max-AP.jpg",
+      "stars": 5,
+      "isProductInCart": false,
+      "id": 1,
+      "availableAmount": 5,
+      "amountInCart": 1
+    },
+    {
+      "name": "Nike Air Max Invigor",
+      "price": 199,
+      "type": "everything, shoes",
+      "image": "images/nike-air-max-invigor.jpg",
+      "stars": 3,
+      "isProductInCart": false,
+      "id": 2,
+      "availableAmount": 3,
+      "amountInCart": 1
+    },
+    {
+      "name": "Nike Court Royale 2",
+      "price": 89,
+      "type": "everything, shoes",
+      "image": "images/nike-court-royale-2.jpg",
+      "stars": 3,
+      "isProductInCart": false,
+      "id": 3,
+      "availableAmount": 10,
+      "amountInCart": 1
+    },
+    {
+      "name": "Nike React Life",
+      "price": 249,
+      "type": "everything, shoes",
+      "image": "images/nike-react-life.jpg",
+      "stars": 1,
+      "isProductInCart": false,
+      "id": 4,
+      "availableAmount": 10,
+      "amountInCart": 1
+    },
+    {
+      "name": "Jordan Sport Dri FIT",
+      "price": 59,
+      "type": "everything, trousers",
+      "image": "images/jordan-sport-dri-FIT.jpg",
+      "stars": 4,
+      "isProductInCart": false,
+      "id": 5,
+      "availableAmount": 6,
+      "amountInCart": 1
+    },
+    {
+      "name": "Jordan",
+      "price": 99,
+      "type": "everything, trousers",
+      "image": "images/jordan.jpg",
+      "stars": 2,
+      "isProductInCart": false,
+      "id": 6,
+      "availableAmount": 2,
+      "amountInCart": 1
+    },
+    {
+      "name": "Nike Pro",
+      "price": 40,
+      "type": "everything, trousers",
+      "image": "images/nike-pro.jpg",
+      "stars": 5,
+      "isProductInCart": false,
+      "id": 7,
+      "availableAmount": 4,
+      "amountInCart": 1
+    },
+    {
+      "name": "Nike Sportswear Club Fleece",
+      "price": 120,
+      "type": "everything, trousers",
+      "image": "images/nike-sportswear-club-fleece.jpg",
+      "stars": 1,
+      "isProductInCart": false,
+      "id": 8,
+      "availableAmount": 14,
+      "amountInCart": 1
+    },
+    {
+      "name": "Nike Sportswear",
+      "price": 179,
+      "type": "everything, trousers",
+      "image": "images/nike-sportswear.jpg",
+      "stars": 3,
+      "isProductInCart": false,
+      "id": 9,
+      "availableAmount": 1,
+      "amountInCart": 1
+    },
+    {
+      "name": "Paris Saint-Germain",
+      "price": 109,
+      "type": "everything, trousers",
+      "image": "images/paris-saint-germain.jpg",
+      "stars": 4,
+      "isProductInCart": false,
+      "id": 10,
+      "availableAmount": 2,
+      "amountInCart": 1
+    }
+  ],
+  "filteredProducts": [],
+  "productsInCart": []
+}

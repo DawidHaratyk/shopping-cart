@@ -1,7 +1,4 @@
-import React, { useEffect } from "react";
 import { IFilters } from "types/index";
-import { useProducts } from "components/ProductsContext/ProductsContext";
-import { IItem } from "data";
 import { useProductsValues } from "./useProductsValues";
 
 interface IFiltersState {
@@ -9,23 +6,11 @@ interface IFiltersState {
 }
 
 const Products = ({ filters }: IFiltersState) => {
-  const { setFilteredProducts, searchedProducts } = useProducts();
+  const { productsList, isError, isLoading } = useProductsValues(filters);
 
-  const { sortedProducts, productsList } = useProductsValues(filters);
+  if (isError) return <h3 className="center">Something went wrong...</h3>;
 
-  useEffect(() => {
-    let sortedAndSearchedProducts: IItem[] = [];
-
-    sortedProducts.filter((sortedProduct) => {
-      searchedProducts.forEach((searchedProduct) => {
-        if (searchedProduct.name === sortedProduct.name) {
-          sortedAndSearchedProducts.push(sortedProduct);
-        }
-      });
-    });
-
-    setFilteredProducts(sortedAndSearchedProducts);
-  }, [searchedProducts, sortedProducts]);
+  if (isLoading) return <h3 className="center">Loading...</h3>;
 
   return <div className="products">{productsList}</div>;
 };

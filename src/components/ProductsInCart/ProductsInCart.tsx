@@ -1,9 +1,9 @@
 import { useProductsInCartValues } from "./useProductsInCartValues";
 
 const ProductsInCart = () => {
-  const { allProductsInCart } = useProductsInCartValues();
+  // const { allProductsInCart } = useProductsInCartValues();
 
-  return <div className="products-in-cart">{allProductsInCart}</div>;
+  return <div className="products-in-cart">{/* {allProductsInCart} */}</div>;
 };
 
 export default ProductsInCart;
